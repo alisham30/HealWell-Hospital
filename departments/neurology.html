@@ -1,0 +1,708 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Neurology | Healthcare Hospital</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        /* ===== Base Styles ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            line-height: 1.6;
+            color: #333;
+            background-color: #f9f9f9;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        /* ===== Header Styles ===== */
+        .department-header {
+            background: linear-gradient(rgba(33, 22, 188, 0.85), rgba(22, 86, 126, 0.85)), 
+                        url('../images/neuro-hero.jpg');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 100px 0;
+            text-align: center;
+        }
+        
+        .department-header h1 {
+            font-size: 2.8rem;
+            margin-bottom: 15px;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+        }
+        
+        .department-header p {
+            font-size: 1.2rem;
+            margin-bottom: 25px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        /* ===== Section Styles ===== */
+        .section-padding {
+            padding: 80px 0;
+        }
+        
+        .light-bg {
+            background-color: #f1f7fc;
+        }
+        
+        h2 {
+            font-size: 2.2rem;
+            color: #0d6efd;
+            margin-bottom: 30px;
+            text-align: center;
+            position: relative;
+            padding-bottom: 15px;
+        }
+        
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background:  #0b5ed7;
+        }
+        
+        h3 {
+            font-size: 1.5rem;
+            color:  #0b5ed7;
+            margin-bottom: 15px;
+        }
+        
+        p {
+            margin-bottom: 15px;
+        }
+        
+        /* ===== Two Column Layout ===== */
+        .two-column {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: center;
+        }
+        
+        .two-column img {
+            width: 100%;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .two-column img:hover {
+            transform: scale(1.02);
+        }
+        
+        /* ===== Team Grid ===== */
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .doctor-card {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .doctor-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+        }
+        
+        .doctor-card img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            border-bottom: 3px solid #0b5ed7;
+        }
+        
+        .doctor-info {
+            padding: 20px;
+        }
+        
+        .doctor-info h3 {
+            color: #0b5ed7;
+            margin-bottom: 5px;
+        }
+        
+        .specialty {
+            color: #0b5ed7;
+            font-weight: 600;
+            margin-bottom: 10px;
+            display: block;
+            font-size: 1.1rem;
+        }
+        .lead-doctor {
+            border: 3px solid #0b5ed7;
+            position: relative;
+        }
+        
+        .lead-badge {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: #0b5ed7;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 4px;
+            font-weight: bold;
+            font-size: 0.8rem;
+        }
+        /* ===== Treatments List ===== */
+        .treatments-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 25px;
+            margin-top: 40px;
+        }
+        
+        .treatment-item {
+            background: white;
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+            display: flex;
+            gap: 20px;
+            transition: all 0.3s ease;
+            border-left: 4px solid#0b5ed7;
+        }
+        
+        .treatment-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+        
+        .treatment-icon {
+            color: #0b5ed7;
+            font-size: 1.8rem;
+            margin-top: 5px;
+            min-width: 40px;
+            text-align: center;
+        }
+        
+        /* ===== Case Studies ===== */
+        .case-studies {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .case-card {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .case-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+        }
+        
+        .case-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        
+        .case-content {
+            padding: 20px;
+        }
+        
+        .case-content h3 {
+            color: #0b5ed7;
+            margin-bottom: 10px;
+        }
+        
+        .case-meta {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+            display: flex;
+            gap: 15px;
+        }
+        
+        /* ===== Appointment Section ===== */
+        #appointment {
+            background: linear-gradient(rgba(33, 22, 188, 0.85), rgba(22, 86, 126, 0.85)), 
+                        url('../images/appointment-bg.jpg');
+            background-size: cover;
+            color: white;
+            text-align: center;
+            padding: 80px 0;
+        }
+        
+        #appointment h2 {
+            color: white;
+        }
+        
+        #appointment h2::after {
+            background: white;
+        }
+        
+        .appointment-form {
+            max-width: 600px;
+            margin: 0 auto;
+            background: rgba(255,255,255,0.1);
+            padding: 30px;
+            border-radius: 8px;
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+            text-align: left;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+        
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid rgba(255,255,255,0.3);
+            background: rgba(255,255,255,0.1);
+            border-radius: 4px;
+            color: rgb(80, 117, 197);
+            font-size: 1rem;
+        }
+        
+        .form-group input::placeholder {
+            color: rgba(255,255,255,0.7);
+        }
+        
+        /* ===== Buttons ===== */
+        .btn {
+            display: inline-block;
+            background: #0b5ed7;
+            color: white;
+            padding: 12px 30px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .btn:hover {
+            background:  #06045e;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        
+        .btn-outline {
+            background: transparent;
+            border: 2px solid white;
+            margin-left: 15px;
+        }
+        
+        .btn-outline:hover {
+            background: white;
+            color:  #0b5ed7;
+        }
+        
+        /* ===== Responsive ===== */
+        @media (max-width: 768px) {
+            .two-column {
+                grid-template-columns: 1fr;
+            }
+            
+            .department-header h1 {
+                font-size: 2.2rem;
+            }
+            
+            h2 {
+                font-size: 1.8rem;
+            }
+            
+            .treatments-list,
+            .case-studies {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="department-header">
+        <div class="container">
+            <h1>Neurology Department</h1>
+            <p>Advanced care for brain and nervous system disorders with cutting-edge treatments and compassionate specialists</p>
+            <div style="margin-top: 30px;">
+                <a href="#appointment" class="btn">Book Appointment</a>
+                <a href="#treatments" class="btn btn-outline">Our Treatments</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Overview Section -->
+    <section class="section-padding">
+        <div class="container">
+            <div class="two-column">
+                <div>
+                    <h2>About Our Neurology Center</h2>
+                    <p>Our neurology department is recognized as a regional center of excellence, offering comprehensive care for all neurological conditions. We combine advanced technology with personalized treatment plans to achieve the best outcomes.</p>
+                    <p>Our team includes fellowship-trained specialists in stroke, epilepsy, movement disorders, and neuromuscular diseases, working together to provide coordinated care.</p>
+                    <ul style="margin-top: 20px; margin-left: 20px; list-style-type: none;">
+                        <li style="margin-bottom: 10px; position: relative; padding-left: 25px;">
+                            <i class="fas fa-brain" style="color:  #0b5ed7; position: absolute; left: 0;"></i>
+                            <strong>Certified Stroke Center:</strong> 24/7 emergency interventions for acute stroke
+                        </li>
+                        <li style="margin-bottom: 10px; position: relative; padding-left: 25px;">
+                            <i class="fas fa-seedling" style="color:  #0b5ed7; position: absolute; left: 0;"></i>
+                            <strong>Epilepsy Monitoring Unit:</strong> State-of-the-art diagnostic capabilities
+                        </li>
+                        <li style="margin-bottom: 10px; position: relative; padding-left: 25px;">
+                            <i class="fas fa-dna" style="color:  #0b5ed7; position: absolute; left: 0;"></i>
+                            <strong>Memory Disorders Clinic:</strong> Specialized care for Alzheimer's and dementia
+                        </li>
+                    </ul>
+                </div>
+                <div>
+                    <img src="../images/neuro-lab.jpg" alt="Neurology Lab">
+                    <div style="display: flex; justify-content: space-between; margin-top: 15px;">
+                        <div style="text-align: center; background: #f1f7fc; padding: 15px; border-radius: 8px; flex: 1; margin: 0 5px;">
+                            <div style="font-size: 1.8rem; color:  #0b5ed7; font-weight: bold;">30+</div>
+                            <div>Neurology Specialists</div>
+                        </div>
+                        <div style="text-align: center; background: #f1f7fc; padding: 15px; border-radius: 8px; flex: 1; margin: 0 5px;">
+                            <div style="font-size: 1.8rem; color: #0b5ed7; font-weight: bold;">95%</div>
+                            <div>Stroke Recovery Rate</div>
+                        </div>
+                        <div style="text-align: center; background: #f1f7fc; padding: 15px; border-radius: 8px; flex: 1; margin: 0 5px;">
+                            <div style="font-size: 1.8rem; color:  #0b5ed7; font-weight: bold;">15min</div>
+                            <div>Avg. Stroke Response Time</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Our Team Section -->
+    <section class="section-padding light-bg">
+        <div class="container">
+            <h2>Our Neurology Specialists</h2>
+            <p style="text-align: center; max-width: 700px; margin: 0 auto 30px;">Meet our team of board-certified neurologists, each with specialized training in different neurological subspecialties.</p>
+            <div class="team-grid">
+                <div class="doctor-card lead-doctor">
+                    <div class="lead-badge">Department Lead</div>
+                    <img src="../images/doctor2.jpg" alt="Dr. Michael Chen">
+                    <div class="doctor-info">
+                        <h3>Dr. Michael Chen</h3>
+                        <span class="specialty">Stroke Specialist</span>
+                        <p><strong>Education:</strong> MD, Johns Hopkins University</p>
+                        <p><strong>Experience:</strong> 15+ years</p>
+                        <p><strong>Specializes in:</strong> Acute stroke interventions, carotid stenting</p>
+                        <div style="margin-top: 15px;">
+                            
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="doctor-card">
+                    <img src="../images/dr. kim.avif" alt="Dr. Emily Kim">
+                    <div class="doctor-info">
+                        <h3>Dr. Emily Kim</h3>
+                        <span class="specialty">Epileptologist</span>
+                        <p><strong>Education:</strong> MD, Mayo Clinic</p>
+                        <p><strong>Experience:</strong> 12+ years</p>
+                        <p><strong>Specializes in:</strong> Refractory epilepsy, surgical evaluations</p>
+                        <div style="margin-top: 15px;">
+                            
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="doctor-card">
+                    <img src="../images/dr. patel.jpg" alt="Dr. Raj Patel">
+                    <div class="doctor-info">
+                        <h3>Dr. Raj Patel</h3>
+                        <span class="specialty">Movement Disorders Specialist</span>
+                        <p><strong>Education:</strong> MD, Harvard Medical School</p>
+                        <p><strong>Experience:</strong> 10+ years</p>
+                        <p><strong>Specializes in:</strong> Parkinson's disease, deep brain stimulation</p>
+                        <div style="margin-top: 15px;">
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Treatments Section -->
+    <section id="treatments" class="section-padding">
+        <div class="container">
+            <h2>Our Treatments & Procedures</h2>
+            <p style="text-align: center; max-width: 700px; margin: 0 auto 30px;">We offer comprehensive neurological treatments using the latest evidence-based approaches.</p>
+            <div class="treatments-list">
+                <div class="treatment-item">
+                    <div class="treatment-icon">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <div>
+                        <h3>EEG Testing</h3>
+                        <p>Electroencephalogram to evaluate electrical activity in the brain for seizure diagnosis and monitoring.</p>
+                        <div style="margin-top: 10px;">
+                            <span style="background: #f1f7fc; color: #0b5ed7; padding: 3px 8px; border-radius: 4px; font-size: 0.8rem; margin-right: 5px; display: inline-block;">Outpatient</span>
+                            <span style="background: #f1f7fc; color: #0b5ed7; padding: 3px 8px; border-radius: 4px; font-size: 0.8rem; display: inline-block;">60-90 Minutes</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="treatment-item">
+                    <div class="treatment-icon">
+                        <i class="fas fa-procedures"></i>
+                    </div>
+                    <div>
+                        <h3>Thrombolytic Therapy</h3>
+                        <p>Emergency clot-busting medication for acute ischemic stroke to restore blood flow to the brain.</p>
+                        <div style="margin-top: 10px;">
+                            <span style="background: #f1f7fc; color: #0b5ed7; padding: 3px 8px; border-radius: 4px; font-size: 0.8rem; display: inline-block;">Time-sensitive</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="treatment-item">
+                    <div class="treatment-icon">
+                        <i class="fas fa-dna"></i>
+                    </div>
+                    <div>
+                        <h3>Deep Brain Stimulation</h3>
+                        <p>Surgical implantation of a neurostimulator to treat movement disorders like Parkinson's disease.</p>
+                        <div style="margin-top: 10px;">
+                            <span style="background: #f1f7fc; color: #0b5ed7; padding: 3px 8px; border-radius: 4px; font-size: 0.8rem; margin-right: 5px; display: inline-block;">Inpatient</span>
+                            <span style="background: #f1f7fc; color: #0b5ed7; padding: 3px 8px; border-radius: 4px; font-size: 0.8rem; display: inline-block;">2-3 Day Stay</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="treatment-item">
+                    <div class="treatment-icon">
+                        <i class="fas fa-vial"></i>
+                    </div>
+                    <div>
+                        <h3>Botox Therapy</h3>
+                        <p>Injections to treat chronic migraine, muscle spasticity, and certain movement disorders.</p>
+                        <div style="margin-top: 10px;">
+                            <span style="background: #f1f7fc; color: #0b5ed7; padding: 3px 8px; border-radius: 4px; font-size: 0.8rem; display: inline-block;">Outpatient</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="treatment-item">
+                    <div class="treatment-icon">
+                        <i class="fas fa-magnet"></i>
+                    </div>
+                    <div>
+                        <h3>Transcranial Magnetic Stimulation</h3>
+                        <p>Non-invasive brain stimulation therapy for treatment-resistant depression.</p>
+                        <div style="margin-top: 10px;">
+                            <span style="background: #f1f7fc; color: #0b5ed7; padding: 3px 8px; border-radius: 4px; font-size: 0.8rem; display: inline-block;">Daily for 6 Weeks</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="treatment-item">
+                    <div class="treatment-icon">
+                        <i class="fas fa-spa"></i>
+                    </div>
+                    <div>
+                        <h3>Nerve Conduction Studies</h3>
+                        <p>Diagnostic tests to evaluate peripheral nerve function and identify neuromuscular disorders.</p>
+                        <div style="margin-top: 10px;">
+                            <span style="background: #f1f7fc; color: #0b5ed7; padding: 3px 8px; border-radius: 4px; font-size: 0.8rem; display: inline-block;">30-60 Minutes</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Case Studies Section -->
+    <section class="section-padding light-bg">
+        <div class="container">
+            <h2>Patient Success Stories</h2>
+            <p style="text-align: center; max-width: 700px; margin: 0 auto 30px;">Real cases demonstrating our expertise in complex neurological care.</p>
+            <div class="case-studies">
+                <div class="case-card">
+                    <img src="../images/strokerec.jpg" alt="Stroke Recovery Case">
+                    <div class="case-content">
+                        <h3>Acute Stroke Intervention</h3>
+                        <div class="case-meta">
+                            <span><i class="fas fa-user" style="margin-right: 5px;"></i> 58-year-old male</span>
+                            <span><i class="fas fa-clock" style="margin-right: 5px;"></i> 12 minute response</span>
+                        </div>
+                        <p>Patient arrived with acute left-sided weakness and slurred speech. Received tPA within 12 minutes of arrival with complete resolution of symptoms.</p>
+                        <div style="margin-top: 15px;">
+                            <a href="https://www.nature.com/articles/s41598-022-25029-0" class="btn" style="display: inline-block; padding: 8px 20px; font-size: 0.9rem;">Read Full Case</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="case-card">
+                    <img src="../images/epilepsy.jpg" alt="Epilepsy Case">
+                    <div class="case-content">
+                        <h3>Refractory Epilepsy</h3>
+                        <div class="case-meta">
+                            <span><i class="fas fa-user" style="margin-right: 5px;"></i> 32-year-old female</span>
+                            <span><i class="fas fa-calendar" style="margin-right: 5px;"></i> 15 years seizure-free</span>
+                        </div>
+                        <p>Patient with uncontrolled seizures despite multiple medications. Underwent successful temporal lobe resection with complete seizure freedom.</p>
+                        <div style="margin-top: 15px;">
+                            <a href="https://www.sciencedirect.com/journal/epilepsy-research" class="btn" style="display: inline-block; padding: 8px 20px; font-size: 0.9rem;">Read Full Case</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="case-card">
+                    <img src="../images/parki.jpeg" alt="Parkinson's Case">
+                    <div class="case-content">
+                        <h3>Advanced Parkinson's</h3>
+                        <div class="case-meta">
+                            <span><i class="fas fa-user" style="margin-right: 5px;"></i> 67-year-old male</span>
+                            <span><i class="fas fa-running" style="margin-right: 5px;"></i> 80% symptom reduction</span>
+                        </div>
+                        <p>Patient with debilitating Parkinson's symptoms showed remarkable improvement after DBS implantation with customized programming.</p>
+                        <div style="margin-top: 15px;">
+                            <a href="https://www.parkinsons.org.uk/information-and-support/advanced-parkinsons" class="btn" style="display: inline-block; padding: 8px 20px; font-size: 0.9rem;">Read Full Case</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Appointment Section -->
+    <section id="appointment">
+        <div class="container">
+            <h2>Book an Appointment</h2>
+            <p style="margin-bottom: 30px; max-width: 700px; margin-left: auto; margin-right: auto;">
+                Schedule your consultation with our neurology specialists. Our team will contact you within 24 hours to confirm your appointment.
+            </p>
+            <form class="appointment-form">
+                <div class="form-group">
+                    <label for="name">Full Name</label>
+                    <input type="text" id="name" placeholder="Your Name" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" placeholder="Your Email" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="phone">Phone Number</label>
+                    <input type="tel" id="phone" placeholder="Your Phone" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="service">Service Interested In</label>
+                    <select id="service" required>
+                        <option value="">Select a Service</option>
+                        <option value="consultation">Neurology Consultation</option>
+                        <option value="testing">Diagnostic Testing</option>
+                        <option value="stroke">Stroke Evaluation</option>
+                        <option value="epilepsy">Epilepsy Management</option>
+                        <option value="movement">Movement Disorders</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="doctor">Preferred Doctor (Optional)</label>
+                    <select id="doctor">
+                        <option value="">Any Available Doctor</option>
+                        <option value="chen">Dr. Michael Chen</option>
+                        <option value="kim">Dr. Emily Kim</option>
+                        <option value="patel">Dr. Raj Patel</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="date">Preferred Date</label>
+                    <input type="date" id="date" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="message">Additional Information</label>
+                    <textarea id="message" rows="4" placeholder="Please describe your symptoms or concerns"></textarea>
+                </div>
+                
+                <button type="submit" class="btn">Request Appointment</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer style="background: rgb(49, 77, 177); color: white; padding: 40px 0; text-align: center;">
+        <div class="container">
+            <p>© 2023 Healthcare Hospital. All Rights Reserved.</p>
+            <div style="margin-top: 20px;">
+                <a href="#" style="color: white; margin: 0 10px;"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" style="color: white; margin: 0 10px;"><i class="fab fa-twitter"></i></a>
+                <a href="#" style="color: white; margin: 0 10px;"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Simple form handling
+        document.querySelector('.appointment-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Show confirmation message
+            const confirmation = document.createElement('div');
+            confirmation.style.background = 'rgba(255,255,255,0.2)';
+            confirmation.style.padding = '15px';
+            confirmation.style.borderRadius = '4px';
+            confirmation.style.marginTop = '20px';
+            confirmation.innerHTML = `
+                <h3 style="color: white; margin-bottom: 10px;">Thank You!</h3>
+                <p>We've received your appointment request and will contact you within 24 hours to confirm.</p>
+            `;
+            
+            this.parentNode.insertBefore(confirmation, this.nextSibling);
+            this.reset();
+            
+            // Smooth scroll to show confirmation
+            confirmation.scrollIntoView({ behavior: 'smooth' });
+        });
+    </script>
+</body>
+</html>

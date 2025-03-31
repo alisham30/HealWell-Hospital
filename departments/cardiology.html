@@ -1,0 +1,699 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cardiology | Healthcare Hospital</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        /* ===== Base Styles ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            line-height: 1.6;
+            color: #333;
+            background-color: #f9f9f9;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        /* ===== Header Styles ===== */
+        .department-header {
+            background: linear-gradient(rgba(33, 22, 188, 0.85), rgba(22, 86, 126, 0.85)), 
+                        url('../images/cardio-hero.jpeg');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 100px 0;
+            text-align: center;
+        }
+        
+        .department-header h1 {
+            font-size: 2.8rem;
+            margin-bottom: 15px;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+        }
+        
+        .department-header p {
+            font-size: 1.2rem;
+            margin-bottom: 25px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        /* ===== Section Styles ===== */
+        .section-padding {
+            padding: 80px 0;
+        }
+        
+        .light-bg {
+            background-color: #f1f7fc;
+        }
+        
+        h2 {
+            font-size: 2.2rem;
+            color: #0d6efd;
+            margin-bottom: 30px;
+            text-align: center;
+            position: relative;
+            padding-bottom: 15px;
+        }
+        
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: #0b5ed7;
+        }
+        
+        h3 {
+            font-size: 1.5rem;
+            color: #0b5ed7;
+            margin-bottom: 15px;
+        }
+        
+        p {
+            margin-bottom: 15px;
+        }
+        
+        /* ===== Two Column Layout ===== */
+        .two-column {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: center;
+        }
+        
+        .two-column img {
+            width: 100%;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .two-column img:hover {
+            transform: scale(1.02);
+        }
+        
+        /* ===== Team Grid ===== */
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .doctor-card {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .doctor-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+        }
+        
+        .doctor-card img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            border-bottom: 3px solid #0b5ed7;
+        }
+        
+        .doctor-info {
+            padding: 20px;
+        }
+        
+        .doctor-info h3 {
+            color: #0b5ed7;
+            margin-bottom: 5px;
+        }
+        
+        .specialty {
+            color: #0b5ed7;
+            font-weight: 600;
+            margin-bottom: 10px;
+            display: block;
+            font-size: 1.1rem;
+        }
+        .lead-doctor {
+            border: 3px solid #0b5ed7;
+            position: relative;
+        }
+        
+        .lead-badge {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: #0b5ed7;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 4px;
+            font-weight: bold;
+            font-size: 0.8rem;
+        }
+        /* ===== Treatments List ===== */
+        .treatments-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 25px;
+            margin-top: 40px;
+        }
+        
+        .treatment-item {
+            background: white;
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+            display: flex;
+            gap: 20px;
+            transition: all 0.3s ease;
+            border-left: 4px solid #0b5ed7;
+        }
+        
+        .treatment-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+        
+        .treatment-icon {
+            color: #0b5ed7;
+            font-size: 1.8rem;
+            margin-top: 5px;
+            min-width: 40px;
+            text-align: center;
+        }
+        
+        /* ===== Case Studies ===== */
+        .case-studies {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .case-card {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .case-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+        }
+        
+        .case-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        
+        .case-content {
+            padding: 20px;
+        }
+        
+        .case-content h3 {
+            color: #0b5ed7;
+            margin-bottom: 10px;
+        }
+        
+        .case-meta {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+            display: flex;
+            gap: 15px;
+        }
+        
+        /* ===== Appointment Section ===== */
+        #appointment {
+            background: linear-gradient(rgba(33, 22, 188, 0.85), rgba(22, 86, 126, 0.85)), 
+                        url('../images/appointment-bg.jpg');
+            background-size: cover;
+            color: white;
+            text-align: center;
+            padding: 80px 0;
+        }
+        
+        #appointment h2 {
+            color: white;
+        }
+        
+        #appointment h2::after {
+            background: white;
+        }
+        
+        .appointment-form {
+            max-width: 600px;
+            margin: 0 auto;
+            background: rgba(255,255,255,0.1);
+            padding: 30px;
+            border-radius: 8px;
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+            text-align: left;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+        
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid rgba(255,255,255,0.3);
+            background: rgba(255,255,255,0.1);
+            border-radius: 4px;
+            color: rgb(80, 117, 197);
+            font-size: 1rem;
+        }
+        
+        .form-group input::placeholder {
+            color: rgba(255,255,255,0.7);
+        }
+        
+        /* ===== Buttons ===== */
+        .btn {
+            display: inline-block;
+            background: #0b5ed7;
+            color: white;
+            padding: 12px 30px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .btn:hover {
+            background: #06045e;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        
+        .btn-outline {
+            background: transparent;
+            border: 2px solid white;
+            margin-left: 15px;
+        }
+        
+        .btn-outline:hover {
+            background: white;
+            color: #0b5ed7;
+        }
+        
+        /* ===== Responsive ===== */
+        @media (max-width: 768px) {
+            .two-column {
+                grid-template-columns: 1fr;
+            }
+            
+            .department-header h1 {
+                font-size: 2.2rem;
+            }
+            
+            h2 {
+                font-size: 1.8rem;
+            }
+            
+            .treatments-list,
+            .case-studies {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="department-header">
+        <div  class="container">
+            <h1>Cardiology Department</h1>
+            <p>Comprehensive heart care with advanced diagnostics, treatments, and prevention programs for optimal cardiovascular health</p>
+            <div style="margin-top: 30px;">
+                <a href="#appointment" class="btn">Book Appointment</a>
+                <a href="#treatments" class="btn btn-outline">Our Treatments</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Overview Section -->
+    <section class="section-padding">
+        <div class="container">
+            <div class="two-column">
+                <div>
+                    <h2>About Our Cardiology Center</h2>
+                    <p>Our cardiology department is a leader in cardiovascular care, offering state-of-the-art diagnostics, interventional procedures, and rehabilitation programs. We are committed to preventing, diagnosing, and treating heart disease with personalized approaches.</p>
+                    <p>Our team includes board-certified cardiologists specializing in interventional cardiology, electrophysiology, heart failure, and preventive cardiology, working together to provide comprehensive care.</p>
+                    <ul style="margin-top: 20px; margin-left: 20px; list-style-type: none;">
+                        <li style="margin-bottom: 10px; position: relative; padding-left: 25px;">
+                            <i class="fas fa-heart" style="color: #0b5ed7; position: absolute; left: 0;"></i>
+                            <strong>24/7 Cardiac Emergency Care:</strong> Immediate intervention for heart attacks
+                        </li>
+                        <li style="margin-bottom: 10px; position: relative; padding-left: 25px;">
+                            <i class="fas fa-heartbeat" style="color: #0b5ed7; position: absolute; left: 0;"></i>
+                            <strong>Advanced Cath Lab:</strong> State-of-the-art diagnostic and interventional procedures
+                        </li>
+                        <li style="margin-bottom: 10px; position: relative; padding-left: 25px;">
+                            <i class="fas fa-running" style="color: #0b5ed7; position: absolute; left: 0;"></i>
+                            <strong>Cardiac Rehabilitation:</strong> Comprehensive recovery programs
+                        </li>
+                    </ul>
+                </div>
+                <div>
+                    <img src="../images/cardio-lab.jpg" alt="Cardiology Lab">
+                    <div style="display: flex; justify-content: space-between; margin-top: 15px;">
+                        <div style="text-align: center; background: #f1f7fc; padding: 15px; border-radius: 8px; flex: 1; margin: 0 5px;">
+                            <div style="font-size: 1.8rem; color: #0b5ed7; font-weight: bold;">25+</div>
+                            <div>Cardiology Specialists</div>
+                        </div>
+                        <div style="text-align: center; background: #f1f7fc; padding: 15px; border-radius: 8px; flex: 1; margin: 0 5px;">
+                            <div style="font-size: 1.8rem; color: #0b5ed7; font-weight: bold;">98%</div>
+                            <div>Angioplasty Success Rate</div>
+                        </div>
+                        <div style="text-align: center; background: #f1f7fc; padding: 15px; border-radius: 8px; flex: 1; margin: 0 5px;">
+                            <div style="font-size: 1.8rem; color: #0b5ed7; font-weight: bold;">45min</div>
+                            <div>Avg. Door-to-Balloon Time</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Our Team Section -->
+    <section class="section-padding light-bg">
+        <div class="container">
+            <h2>Our Cardiology Specialists</h2>
+            <p style="text-align: center; max-width: 700px; margin: 0 auto 30px;">Meet our team of board-certified cardiologists, each with specialized training in different cardiovascular subspecialties.</p>
+            <div class="team-grid">
+                <div class="doctor-card lead-doctor">
+                    <div class="lead-badge">Department Lead</div>
+                    <img src="../images/doctor1.jpg" alt="Dr. Sarah Johnson">
+                    <div class="doctor-info">
+                        <h3>Dr. Sarah Johnson</h3>
+                        <span class="specialty">Interventional Cardiologist</span>
+                        <p><strong>Education:</strong> MD, Cleveland Clinic</p>
+                        <p><strong>Experience:</strong> 18+ years</p>
+                        <p><strong>Specializes in:</strong> Complex angioplasty, structural heart disease</p>
+                    </div>
+                </div>
+                
+                <div class="doctor-card">
+                    <img src="../images/dr-lee.jpg" alt="Dr. James Lee">
+                    <div class="doctor-info">
+                        <h3>Dr. James Lee</h3>
+                        <span class="specialty">Electrophysiologist</span>
+                        <p><strong>Education:</strong> MD, Stanford University</p>
+                        <p><strong>Experience:</strong> 15+ years</p>
+                        <p><strong>Specializes in:</strong> Arrhythmia management, ablation procedures</p>
+                    </div>
+                </div>
+                
+                <div class="doctor-card">
+                    <img src="../images/dr-gupta.jpg" alt="Dr. Priya Gupta">
+                    <div class="doctor-info">
+                        <h3>Dr. Ramesh Gupta</h3>
+                        <span class="specialty">Heart Failure Specialist</span>
+                        <p><strong>Education:</strong> MD, Johns Hopkins University</p>
+                        <p><strong>Experience:</strong> 12+ years</p>
+                        <p><strong>Specializes in:</strong> Advanced heart failure, transplant cardiology</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Treatments Section -->
+    <section id="treatments" class="section-padding">
+        <div class="container">
+            <h2>Our Treatments & Procedures</h2>
+            <p style="text-align: center; max-width: 700px; margin: 0 auto 30px;">We offer comprehensive cardiovascular treatments using the latest evidence-based approaches.</p>
+            <div class="treatments-list">
+                <div class="treatment-item">
+                    <div class="treatment-icon">
+                        <i class="fas fa-heartbeat"></i>
+                    </div>
+                    <div>
+                        <h3>Coronary Angiography</h3>
+                        <p>Minimally invasive imaging to visualize coronary arteries and identify blockages or narrowing.</p>
+                        <div style="margin-top: 10px;">
+                            <span style="background: #f1f7fc; color: #0b5ed7; padding: 3px 8px; border-radius: 4px; font-size: 0.8rem; margin-right: 5px; display: inline-block;">Outpatient</span>
+                            <span style="background: #f1f7fc; color: #0b5ed7; padding: 3px 8px; border-radius: 4px; font-size: 0.8rem; display: inline-block;">30-60 Minutes</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="treatment-item">
+                    <div class="treatment-icon">
+                        <i class="fas fa-heart"></i>
+                    </div>
+                    <div>
+                        <h3>Angioplasty & Stenting</h3>
+                        <p>Emergency procedure to open blocked arteries during a heart attack and restore blood flow.</p>
+                        <div style="margin-top: 10px;">
+                            <span style="background: #f1f7fc; color: #0b5ed7; padding: 3px 8px; border-radius: 4px; font-size: 0.8rem; display: inline-block;">Time-sensitive</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="treatment-item">
+                    <div class="treatment-icon">
+                        <i class="fas fa-bolt"></i>
+                    </div>
+                    <div>
+                        <h3>Pacemaker Implantation</h3>
+                        <p>Surgical procedure to implant a device that regulates abnormal heart rhythms.</p>
+                        <div style="margin-top: 10px;">
+                            <span style="background: #f1f7fc; color: #0b5ed7; padding: 3px 8px; border-radius: 4px; font-size: 0.8rem; margin-right: 5px; display: inline-block;">Inpatient</span>
+                            <span style="background: #f1f7fc; color: #0b5ed7; padding: 3px 8px; border-radius: 4px; font-size: 0.8rem; display: inline-block;">1-2 Day Stay</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="treatment-item">
+                    <div class="treatment-icon">
+                        <i class="fas fa-heartbeat"></i>
+                    </div>
+                    <div>
+                        <h3>Echocardiography</h3>
+                        <p>Non-invasive ultrasound imaging to evaluate heart structure and function.</p>
+                        <div style="margin-top: 10px;">
+                            <span style="background: #f1f7fc; color: #0b5ed7; padding: 3px 8px; border-radius: 4px; font-size: 0.8rem; display: inline-block;">Outpatient</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="treatment-item">
+                    <div class="treatment-icon">
+                        <i class="fas fa-fire"></i>
+                    </div>
+                    <div>
+                        <h3>Ablation Therapy</h3>
+                        <p>Procedure to correct abnormal heart rhythms by scarring small areas of heart tissue.</p>
+                        <div style="margin-top: 10px;">
+                            <span style="background: #f1f7fc; color: #0b5ed7; padding: 3px 8px; border-radius: 4px; font-size: 0.8rem; display: inline-block;">2-4 Hour Procedure</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="treatment-item">
+                    <div class="treatment-icon">
+                        <i class="fas fa-dumbbell"></i>
+                    </div>
+                    <div>
+                        <h3>Cardiac Rehabilitation</h3>
+                        <p>Supervised program of exercise and education to improve cardiovascular health.</p>
+                        <div style="margin-top: 10px;">
+                            <span style="background: #f1f7fc; color: #0b5ed7; padding: 3px 8px; border-radius: 4px; font-size: 0.8rem; display: inline-block;">12-36 Sessions</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Case Studies Section -->
+    <section class="section-padding light-bg">
+        <div class="container">
+            <h2>Patient Success Stories</h2>
+            <p style="text-align: center; max-width: 700px; margin: 0 auto 30px;">Real cases demonstrating our expertise in complex cardiovascular care.</p>
+            <div class="case-studies">
+                <div class="case-card">
+                    <img src="../images/mi.webp" alt="Heart Attack Case">
+                    <div class="case-content">
+                        <h3>Acute MI Intervention</h3>
+                        <div class="case-meta">
+                            <span><i class="fas fa-user" style="margin-right: 5px;"></i> 62-year-old male</span>
+                            <span><i class="fas fa-clock" style="margin-right: 5px;"></i> 28 minute response</span>
+                        </div>
+                        <p>Patient arrived with STEMI and received PCI within 28 minutes of arrival with complete restoration of blood flow and full recovery.</p>
+                        <div style="margin-top: 15px;">
+                            <a href="https://www.athersys.com/multistem-therapy/clinical-trials/acute-myocardial-infarction/default.aspx" class="btn" style="display: inline-block; padding: 8px 20px; font-size: 0.9rem;">Read Full Case</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="case-card">
+                    <img src="../images/afib.jpg" alt="AFib Case">
+                    <div class="case-content">
+                        <h3>Complex AFib Ablation</h3>
+                        <div class="case-meta">
+                            <span><i class="fas fa-user" style="margin-right: 5px;"></i> 54-year-old female</span>
+                            <span><i class="fas fa-calendar" style="margin-right: 5px;"></i> 3 years symptom-free</span>
+                        </div>
+                        <p>Patient with persistent atrial fibrillation underwent successful ablation with complete resolution of arrhythmia and discontinuation of medications.</p>
+                        <div style="margin-top: 15px;">
+                            <a href="https://www.slhn.org/blog/2024/first-to-offer-new-pulsed-field-ablation-for-atrial-fibrillation" class="btn" style="display: inline-block; padding: 8px 20px; font-size: 0.9rem;">Read Full Case</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="case-card">
+                    <img src="../images/advanced.jpg" alt="Heart Failure Case">
+                    <div class="case-content">
+                        <h3>Advanced Heart Failure</h3>
+                        <div class="case-meta">
+                            <span><i class="fas fa-user" style="margin-right: 5px;"></i> 68-year-old male</span>
+                            <span><i class="fas fa-heartbeat" style="margin-right: 5px;"></i> EF improved from 25% to 45%</span>
+                        </div>
+                        <p>Patient with severe heart failure showed remarkable improvement with advanced medical therapy and cardiac rehab program.</p>
+                        <div style="margin-top: 15px;">
+                            <a href="https://www.templehealth.org/services/conditions/advanced-heart-failure/treatment-options" class="btn" style="display: inline-block; padding: 8px 20px; font-size: 0.9rem;">Read Full Case</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Appointment Section -->
+    <section id="appointment">
+        <div class="container">
+            <h2>Book an Appointment</h2>
+            <p style="margin-bottom: 30px; max-width: 700px; margin-left: auto; margin-right: auto;">
+                Schedule your consultation with our cardiology specialists. Our team will contact you within 24 hours to confirm your appointment.
+            </p>
+            <form class="appointment-form">
+                <div class="form-group">
+                    <label for="name">Full Name</label>
+                    <input type="text" id="name" placeholder="Your Name" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" placeholder="Your Email" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="phone">Phone Number</label>
+                    <input type="tel" id="phone" placeholder="Your Phone" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="service">Service Interested In</label>
+                    <select id="service" required>
+                        <option value="">Select a Service</option>
+                        <option value="consultation">Cardiology Consultation</option>
+                        <option value="testing">Diagnostic Testing</option>
+                        <option value="prevention">Preventive Cardiology</option>
+                        <option value="arrhythmia">Arrhythmia Management</option>
+                        <option value="rehab">Cardiac Rehabilitation</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="doctor">Preferred Doctor (Optional)</label>
+                    <select id="doctor">
+                        <option value="">Any Available Doctor</option>
+                        <option value="johnson">Dr. Sarah Johnson</option>
+                        <option value="lee">Dr. James Lee</option>
+                        <option value="gupta">Dr. Priya Gupta</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="date">Preferred Date</label>
+                    <input type="date" id="date" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="message">Additional Information</label>
+                    <textarea id="message" rows="4" placeholder="Please describe your symptoms or concerns"></textarea>
+                </div>
+                
+                <button type="submit" class="btn">Request Appointment</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer style="background: rgb(49, 77, 177); color: white; padding: 40px 0; text-align: center;">
+        <div class="container">
+            <p>© 2023 Healthcare Hospital. All Rights Reserved.</p>
+            <div style="margin-top: 20px;">
+                <a href="#" style="color: white; margin: 0 10px;"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" style="color: white; margin: 0 10px;"><i class="fab fa-twitter"></i></a>
+                <a href="#" style="color: white; margin: 0 10px;"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Simple form handling
+        document.querySelector('.appointment-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Show confirmation message
+            const confirmation = document.createElement('div');
+            confirmation.style.background = 'rgba(255,255,255,0.2)';
+            confirmation.style.padding = '15px';
+            confirmation.style.borderRadius = '4px';
+            confirmation.style.marginTop = '20px';
+            confirmation.innerHTML = `
+                <h3 style="color: white; margin-bottom: 10px;">Thank You!</h3>
+                <p>We've received your appointment request and will contact you within 24 hours to confirm.</p>
+            `;
+            
+            this.parentNode.insertBefore(confirmation, this.nextSibling);
+            this.reset();
+            
+            // Smooth scroll to show confirmation
+            confirmation.scrollIntoView({ behavior: 'smooth' });
+        });
+    </script>
+</body>
+</html>

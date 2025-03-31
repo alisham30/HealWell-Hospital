@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About HealWell Hospital</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <style>
+        :root {
+            --primary: #0b5ed7;
+            --primary-dark: #094a9d;
+            --primary-light: #d0e3ff;
+            --secondary: #6c757d;
+            --dark: #212529;
+            --light: #f8f9fa;
+            --white: #ffffff;
+            --font-primary: 'Poppins', sans-serif;
+            --transition: all 0.3s ease;
+            --border-radius: 10px;
+            --shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+            --shadow-sm: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-primary);
+            color: var(--dark);
+            background-color: var(--white);
+            line-height: 1.6;
+        }
+
+        /* Main Content Styles */
+        .main-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 2.8em;
+            color: var(--primary);
+            margin: 30px 0;
+            text-shadow: 0px 4px 10px rgba(11, 94, 215, 0.2);
+            animation: fadeIn 2s ease-in-out;
+            position: relative;
+            display: inline-block;
+        }
+
+        h1::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background-color: var(--primary);
+            border-radius: 2px;
+        }
+
+        h2 {
+            color: var(--primary-dark);
+            margin-bottom: 15px;
+            font-size: 1.8em;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .section {
+            background: linear-gradient(135deg, var(--light) 0%, var(--primary-light) 100%);
+            padding: 30px;
+            margin: 30px 0;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            opacity: 0;
+            transform: translateY(20px);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            transition: var(--transition);
+            border-left: 5px solid var(--primary);
+        }
+
+        .section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        .section img {
+            width: 45%;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .section img:hover {
+            transform: scale(1.02);
+        }
+
+        .section-content {
+            width: 50%;
+            text-align: left;
+        }
+
+        .section:nth-child(even) .section-content {
+            order: -1;
+        }
+
+        .counter-container {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            margin: 40px 0;
+        }
+
+        .counter-box {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: var(--white);
+            padding: 25px 15px;
+            margin: 15px;
+            border-radius: var(--border-radius);
+            font-size: 1.5em;
+            font-weight: bold;
+            display: inline-block;
+            transition: var(--transition);
+            min-width: 200px;
+            box-shadow: var(--shadow);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .counter-box::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(
+                to bottom right,
+                rgba(255, 255, 255, 0.3) 0%,
+                rgba(255, 255, 255, 0) 60%
+            );
+            transform: rotate(30deg);
+            transition: var(--transition);
+        }
+        
+
+        .counter-box:hover {
+            transform: translateY(-10px) scale(1.05);
+        }
+
+        .counter-box:hover::before {
+            transform: rotate(30deg) translate(20px, 20px);
+        }
+
+        .counter-box span {
+            display: block;
+            font-size: 0.6em;
+            font-weight: normal;
+            margin-top: 5px;
+        }
+
+        video {
+            width: 100%;
+            border-radius: var(--border-radius);
+            margin: 30px 0;
+            box-shadow: var(--shadow);
+            border: 5px solid var(--primary-light);
+        }
+
+        .mission-statement {
+            background-color: var(--primary);
+            color: white;
+            padding: 40px;
+            border-radius: var(--border-radius);
+            margin: 40px 0;
+            box-shadow: var(--shadow);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .mission-statement::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path fill="rgba(255,255,255,0.05)" d="M0,0 L100,0 L100,100 L0,100 Z" /></svg>');
+            background-size: cover;
+        }
+
+        .mission-statement h2 {
+            color: white;
+            position: relative;
+        }
+
+        .mission-statement p {
+            font-size: 1.2em;
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .timeline {
+            position: relative;
+            max-width: 1000px;
+            margin: 40px auto;
+        }
+
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 4px;
+            background-color: var(--primary);
+            top: 40px; /* Reduced length */
+            bottom: 40px; /* Reduced length */
+            left: 50%;
+            margin-left: -2px;
+        }
+
+        .timeline-item {
+            padding: 10px 40px;
+            position: relative;
+            width: 50%;
+            box-sizing: border-box;
+        }
+
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background-color: white;
+            border: 4px solid var(--primary);
+            border-radius: 50%;
+            top: 15px;
+            z-index: 1;
+        }
+
+        .left {
+            left: 0;
+        }
+
+        .right {
+            left: 50%;
+        }
+
+        .left::after {
+            right: -12px;
+        }
+
+        .right::after {
+            left: -12px;
+        }
+
+        .timeline-content {
+            padding: 20px;
+            background-color: white;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow-sm);
+            border-left: 3px solid var(--primary);
+        }
+
+        .timeline-content h3 {
+            color: var(--primary-dark);
+        }
+
+        .timeline-date {
+            font-weight: bold;
+            color: var(--primary);
+        }
+
+        @media (max-width: 768px) {
+            .section {
+                flex-direction: column;
+            }
+
+            .section img, .section-content {
+                width: 100%;
+            }
+
+            .section:nth-child(even) .section-content {
+                order: 0;
+            }
+
+            .timeline::after {
+                left: 31px;
+            }
+
+            .timeline-item {
+                width: 100%;
+                padding-left: 70px;
+                padding-right: 25px;
+            }
+
+            .timeline-item::after {
+                left: 21px;
+            }
+
+            .left::after, .right::after {
+                left: 21px;
+            }
+
+            .right {
+                left: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Top Bar -->
+    <div class="top-bar">
+        <div class="container">
+            <div class="contact-info">
+                <span><i class="fas fa-phone-alt"></i> Emergency: +1 (555) 123-4567</span>
+                <span><i class="fas fa-envelope"></i> info@healwellhospital.com</span>
+            </div>
+            <div class="social-links">
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <img src="../images/logo.png" alt="HealWell Hospital Logo" class="img-hover-zoom">
+                <span>HealWell</span>
+            </div>
+            <nav class="navbar">
+                <ul>
+                    <li><a href="../index.html#home">Home</a></li>
+                    <li><a href="../index.html#about" class="active">About Us</a></li>
+                    <li><a href="../index.html#services">Services</a></li>
+                    <li><a href="../index.html#doctors">Doctors</a></li>
+                    <li><a href="../index.html#contact">Contact</a></li>
+                </ul>
+            </nav>
+            <div class="appointment-btn">
+                <a href="../index.html#appointment" class="btn">Book Appointment</a>
+            </div>
+            <div class="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </header>
+
+    <div class="main-container">
+        <h1>About HealWell Hospital</h1>
+        
+        <video autoplay loop muted>
+            <source src="../images/hospital.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        
+        <div class="section" id="story">
+            <img src="../images/story.jpg" alt="Our Story">
+            <div class="section-content">
+                <h2>Our Humble Beginnings</h2>
+                <p>Founded in 1995 by Dr. Sarah Thompson and a team of passionate healthcare professionals, HealWell Hospital started as a small 20-bed community clinic with a dream to redefine healthcare delivery. What began as a modest facility in downtown Chicago has now blossomed into a premier healthcare institution recognized nationally for its patient-centered approach.</p>
+                <p>Our journey has been marked by steady growth, technological adoption, and an unwavering commitment to medical excellence. From our first successful open-heart surgery in 1998 to becoming a Level I Trauma Center in 2010, each milestone has strengthened our resolve to serve the community better.</p>
+                <p>Today, we stand as a 500-bed multi-specialty quaternary care hospital with advanced medical facilities, cutting-edge technology, and a team of highly skilled professionals dedicated to providing compassionate, comprehensive patient care.</p>
+            </div>
+        </div>
+        
+        <div class="mission-statement">
+            <h2>Our Core Philosophy</h2>
+            <p>"To heal with compassion, to innovate with purpose, and to serve with excellence - these principles guide every decision we make and every life we touch at HealWell Hospital."</p>
+        </div>
+        
+        <div class="section" id="mission">
+            <div class="section-content">
+                <h2>Our Mission & Vision</h2>
+                <p>At HealWell Hospital, our mission is to deliver world-class medical care through innovation, expertise, and compassion, ensuring every patient receives personalized treatment tailored to their unique needs.</p>
+                <p>We envision a future where healthcare transcends boundaries - where advanced medicine meets human touch, where technology enhances rather than replaces the healing relationship, and where every individual has access to quality care regardless of their background or circumstances.</p>
+                <p>Our core values of Integrity, Excellence, Compassion, Innovation, and Community guide our daily operations and long-term strategic decisions. These values are reflected in our patient satisfaction scores that consistently rank in the top 1% nationally.</p>
+            </div>
+            <img src="../images/mission.jpg" alt="Our Mission">
+        </div>
+        
+        <div class="section" id="plans">
+            <img src="../images/robotic-surgery.jpg" alt="Our Future Plans">
+            <div class="section-content">
+                <h2>Building the Future of Healthcare</h2>
+                <p>As we look ahead, HealWell Hospital is committed to pioneering the next generation of medical care. Our ambitious expansion plan includes establishing specialized centers of excellence in oncology, neurology, and cardiac care across three new locations by 2025.</p>
+                <p>We're investing $200 million in telemedicine infrastructure to bring our expertise to underserved rural communities. Our research division is collaborating with leading universities on groundbreaking studies in regenerative medicine and AI-assisted diagnostics.</p>
+                <p>The upcoming HealWell Innovation Hub will serve as an incubator for medical startups, fostering collaboration between physicians, engineers, and entrepreneurs to solve healthcare's most pressing challenges.</p>
+            </div>
+        </div>
+
+        <div class="section" id="achievements">
+            <div class="section-content">
+                <h2>Recognized Excellence</h2>
+                <p>HealWell Hospital's commitment to quality has been recognized through numerous awards and accreditations, including:</p>
+                <ul style="margin-left: 20px; margin-top: 10px;">
+                    <li>Joint Commission International Accreditation (2018, 2022)</li>
+                    <li>Magnet Recognition for Nursing Excellence (5 consecutive years)</li>
+                    <li>Top 50 Cardiovascular Hospitals in the U.S. (2020-2023)</li>
+                    <li>Best Patient Experience Award - National Healthcare Association</li>
+                </ul>
+                <p>Our specialists have performed over 100,000 successful surgeries, published 250+ research papers, and pioneered 15 innovative surgical techniques now adopted worldwide.</p>
+            </div>
+            <img src="../images/trophies.jpg" alt="Our Achievements">
+        </div>
+        
+        <div class="timeline">
+            <h2 style="text-align: center; margin-bottom: 40px;">Our Journey Through Time</h2>
+            <div class="timeline-item left">
+                <div class="timeline-content">
+                    <div class="timeline-date">1995</div>
+                    <h3>Foundation</h3>
+                    <p>HealWell Hospital founded as a small community clinic with 20 beds and 5 physicians.</p>
+                </div>
+            </div>
+            <div class="timeline-item right">
+                <div class="timeline-content">
+                    <div class="timeline-date">2005</div>
+                    <h3>First Expansion</h3>
+                    <p>Opened new 150-bed facility with advanced surgical suites and ICU.</p>
+                </div>
+            </div>
+            <div class="timeline-item left">
+                <div class="timeline-content">
+                    <div class="timeline-date">2010</div>
+                    <h3>Robotic Surgery Program</h3>
+                    <p>Launched one of the nation's first comprehensive robotic surgery programs.</p>
+                </div>
+            </div>
+            <div class="timeline-item right">
+                <div class="timeline-content">
+                    <div class="timeline-date">2015</div>
+                    <h3>AI Diagnostics</h3>
+                    <p>Implemented AI-powered diagnostic systems, reducing diagnostic errors by 40%.</p>
+                </div>
+            </div>
+            <div class="timeline-item left">
+                <div class="timeline-content">
+                    <div class="timeline-date">2020</div>
+                    <h3>Pandemic Response</h3>
+                    <p>Recognized as a regional leader in COVID-19 treatment and vaccine distribution.</p>
+                </div>
+            </div>
+            <div class="timeline-item right">
+                <div class="timeline-content">
+                    <div class="timeline-date">2023</div>
+                    <h3>Global Expansion</h3>
+                    <p>Opened first international facility in London, marking our global presence.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            // Animate sections
+            gsap.to(".section", { 
+                opacity: 1, 
+                y: 0, 
+                duration: 1.5, 
+                stagger: 0.3,
+                ease: "power3.out"
+            });
+            
+            // Animate video
+            gsap.from("video", { 
+                opacity: 0, 
+                scale: 0.8, 
+                duration: 1.5,
+                ease: "back.out(1.7)"
+            });
+            
+            // Animate counter boxes
+            gsap.from(".counter-box", { 
+                opacity: 0, 
+                y: 50,
+                duration: 1, 
+                stagger: 0.2,
+                ease: "elastic.out(1, 0.5)"
+            });
+            
+            // Animate timeline items
+            gsap.from(".timeline-item", {
+                opacity: 0,
+                y: 30,
+                duration: 0.8,
+                stagger: 0.2,
+                scrollTrigger: {
+                    trigger: ".timeline",
+                    start: "top 80%",
+                    toggleActions: "play none none none"
+                }
+            });
+        });
+    </script>
+</body>
+</html>

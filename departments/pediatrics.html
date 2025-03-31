@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pediatrics | Healthcare Hospital</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        /* ===== Base Styles ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            line-height: 1.6;
+            color: #333;
+            background-color: #f9f9f9;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        /* ===== Header Styles ===== */
+        .department-header {
+            background: linear-gradient(rgba(11, 94, 215, 0.85), rgba(6, 4, 94, 0.85)), 
+                        url('../images/ped-hero.jpg');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 100px 0;
+            text-align: center;
+        }
+        
+        .department-header h1 {
+            font-size: 2.8rem;
+            margin-bottom: 15px;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+        }
+        
+        .department-header p {
+            font-size: 1.2rem;
+            margin-bottom: 25px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        /* ===== Section Styles ===== */
+        .section-padding {
+            padding: 80px 0;
+        }
+        
+        .light-bg {
+            background-color: #f1f7fc;
+        }
+        
+        h2 {
+            font-size: 2.2rem;
+            color: #0b5ed7;
+            margin-bottom: 30px;
+            text-align: center;
+            position: relative;
+            padding-bottom: 15px;
+        }
+        
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: #0b5ed7;
+        }
+        
+        h3 {
+            font-size: 1.5rem;
+            color: #0b5ed7;
+            margin-bottom: 15px;
+        }
+        
+        p {
+            margin-bottom: 15px;
+        }
+        
+        /* ===== Two Column Layout ===== */
+        .two-column {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: center;
+        }
+        
+        .two-column img {
+            width: 100%;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .two-column img:hover {
+            transform: scale(1.02);
+        }
+        
+        /* ===== Team Grid ===== */
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .doctor-card {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .doctor-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+        }
+        
+        .doctor-card img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            border-bottom: 3px solid #0b5ed7;
+        }
+        
+        .doctor-info {
+            padding: 20px;
+        }
+        
+        .doctor-info h3 {
+            color: #0b5ed7;
+            margin-bottom: 5px;
+        }
+        
+        .specialty {
+            color: #0b5ed7;
+            font-weight: 600;
+            margin-bottom: 10px;
+            display: block;
+            font-size: 1.1rem;
+        }
+        .lead-doctor {
+            border: 3px solid #0b5ed7;
+            position: relative;
+        }
+        
+        .lead-badge {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: #0b5ed7;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 4px;
+            font-weight: bold;
+            font-size: 0.8rem;
+        }
+        
+        /* ===== Treatments List ===== */
+        .treatments-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 25px;
+            margin-top: 40px;
+        }
+        
+        .treatment-item {
+            background: white;
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+            display: flex;
+            gap: 20px;
+            transition: all 0.3s ease;
+            border-left: 4px solid #0b5ed7;
+        }
+        
+        .treatment-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+        
+        .treatment-icon {
+            color: #0b5ed7;
+            font-size: 1.8rem;
+            margin-top: 5px;
+            min-width: 40px;
+            text-align: center;
+        }
+        
+        /* ===== Case Studies ===== */
+        .case-studies {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .case-card {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .case-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+        }
+        
+        .case-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        
+        .case-content {
+            padding: 20px;
+        }
+        
+        .case-content h3 {
+            color: #0b5ed7;
+            margin-bottom: 10px;
+        }
+        
+        .case-meta {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+            display: flex;
+            gap: 15px;
+        }
+        
+        /* ===== Appointment Section ===== */
+        #appointment {
+            background: linear-gradient(rgba(11, 94, 215, 0.85), rgba(6, 4, 94, 0.85)), 
+                        url('../images/appointment-bg.jpg');
+            background-size: cover;
+            color: white;
+            text-align: center;
+            padding: 80px 0;
+        }
+        
+        #appointment h2 {
+            color: white;
+        }
+        
+        #appointment h2::after {
+            background: white;
+        }
+        
+        .appointment-form {
+            max-width: 600px;
+            margin: 0 auto;
+            background: rgba(255,255,255,0.1);
+            padding: 30px;
+            border-radius: 8px;
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+            text-align: left;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+        
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid rgba(255,255,255,0.3);
+            background: rgba(255,255,255,0.1);
+            border-radius: 4px;
+            color: rgb(80, 117, 197);
+            font-size: 1rem;
+        }
+        
+        .form-group input::placeholder {
+            color: rgba(255,255,255,0.7);
+        }
+        
+        /* ===== Buttons ===== */
+        .btn {
+            display: inline-block;
+            background: #0b5ed7;
+            color: white;
+            padding: 12px 30px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .btn:hover {
+            background: #06045e;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        
+        .btn-outline {
+            background: transparent;
+            border: 2px solid white;
+            margin-left: 15px;
+        }
+        
+        .btn-outline:hover {
+            background: white;
+            color: #0b5ed7;
+        }
+        
+        /* ===== Responsive ===== */
+        @media (max-width: 768px) {
+            .two-column {
+                grid-template-columns: 1fr;
+            }
+            
+            .department-header h1 {
+                font-size: 2.2rem;
+            }
+            
+            h2 {
+                font-size: 1.8rem;
+            }
+            
+            .treatments-list,
+            .case-studies {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="department-header">
+        <div class="container">
+            <h1>Pediatric Care Center</h1>
+            <p>Specialized healthcare for infants, children, and adolescents in a child-friendly environment</p>
+            <div style="margin-top: 30px;">
+                <a href="#appointment" class="btn">Book Appointment</a>
+                <a href="#treatments" class="btn btn-outline">Our Services</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Overview Section -->
+    <section class="section-padding">
+        <div class="container">
+            <div class="two-column">
+                <div>
+                    <h2>About Our Pediatric Center</h2>
+                    <p>Our pediatrics department provides comprehensive healthcare for children from birth through adolescence. We combine medical expertise with a warm, welcoming environment designed to make children feel comfortable.</p>
+                    <p>Our team includes board-certified pediatricians and pediatric specialists working together to provide age-appropriate care for your child's physical, emotional, and developmental needs.</p>
+                    <ul style="margin-top: 20px; margin-left: 20px; list-style-type: none;">
+                        <li style="margin-bottom: 10px; position: relative; padding-left: 25px;">
+                            <i class="fas fa-baby" style="color: #0b5ed7; position: absolute; left: 0;"></i>
+                            <strong>Well-Child Visits:</strong> Comprehensive developmental screenings
+                        </li>
+                        <li style="margin-bottom: 10px; position: relative; padding-left: 25px;">
+                            <i class="fas fa-syringe" style="color: #0b5ed7; position: absolute; left: 0;"></i>
+                            <strong>Vaccinations:</strong> Complete immunization schedules
+                        </li>
+                        <li style="margin-bottom: 10px; position: relative; padding-left: 25px;">
+                            <i class="fas fa-stethoscope" style="color: #0b5ed7; position: absolute; left: 0;"></i>
+                            <strong>24/7 Urgent Care:</strong> For childhood illnesses and injuries
+                        </li>
+                    </ul>
+                </div>
+                <div>
+                    <img src="../images/ped-lab.webp" alt="Pediatric Clinic">
+                    <div style="display: flex; justify-content: space-between; margin-top: 15px;">
+                        <div style="text-align: center; background: #f1f7fc; padding: 15px; border-radius: 8px; flex: 1; margin: 0 5px;">
+                            <div style="font-size: 1.8rem; color: #0b5ed7; font-weight: bold;">20+</div>
+                            <div>Pediatric Specialists</div>
+                        </div>
+                        <div style="text-align: center; background: #f1f7fc; padding: 15px; border-radius: 8px; flex: 1; margin: 0 5px;">
+                            <div style="font-size: 1.8rem; color: #0b5ed7; font-weight: bold;">98%</div>
+                            <div>Parent Satisfaction</div>
+                        </div>
+                        <div style="text-align: center; background: #f1f7fc; padding: 15px; border-radius: 8px; flex: 1; margin: 0 5px;">
+                            <div style="font-size: 1.8rem; color: #0b5ed7; font-weight: bold;">0min</div>
+                            <div>Wait Time for Emergencies</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Our Team Section -->
+    <section class="section-padding light-bg">
+        <div class="container">
+            <h2>Our Pediatric Specialists</h2>
+            <p style="text-align: center; max-width: 700px; margin: 0 auto 30px;">Meet our team of board-certified pediatricians dedicated to your child's health and development.</p>
+            <div class="team-grid">
+                <div class="doctor-card lead-doctor">
+                    <div class="lead-badge">Department Lead</div>
+                    
+                    <img src="../images/doctor3.jpg" alt="Dr. Emily Johnson">
+                    <div class="doctor-info">
+                        <h3>Dr. Emily Rodriguez</h3>
+                        <span class="specialty">General Pediatrician</span>
+                        <p><strong>Education:</strong> MD, Boston Children's Hospital</p>
+                        <p><strong>Experience:</strong> 12+ years</p>
+                        <p><strong>Specializes in:</strong> Newborn care, adolescent medicine</p>
+                    </div>
+                </div>
+                
+                <div class="doctor-card">
+                    <img src="../images/drped2.jpg" alt="Dr. Michael Rodriguez">
+                    <div class="doctor-info">
+                        <h3>Dr. Michael Ross</h3>
+                        <span class="specialty">Pediatric Allergist</span>
+                        <p><strong>Education:</strong> MD, Children's Hospital of Philadelphia</p>
+                        <p><strong>Experience:</strong> 8+ years</p>
+                        <p><strong>Specializes in:</strong> Asthma, food allergies, eczema</p>
+                    </div>
+                </div>
+                <div class="doctor-card">
+                    <img src="../images/drped3.webp" alt="Dr. Michael Rodriguez">
+                    <div class="doctor-info">
+                        <h3>Dr. Shayla Singh</h3>
+                        <span class="specialty">Pediatric Allergist</span>
+                        <p><strong>Education:</strong> MD, AIMS Delhi</p>
+                        <p><strong>Experience:</strong> 8+ years</p>
+                        <p><strong>Specializes in:</strong>Advanced Pediatrics and Holistics</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Treatments Section -->
+    <section id="treatments" class="section-padding">
+        <div class="container">
+            <h2>Our Pediatric Services</h2>
+            <p style="text-align: center; max-width: 700px; margin: 0 auto 30px;">We offer comprehensive pediatric care using child-friendly approaches.</p>
+            <div class="treatments-list">
+                <div class="treatment-item">
+                    <div class="treatment-icon">
+                        <i class="fas fa-baby"></i>
+                    </div>
+                    <div>
+                        <h3>Well-Child Visits</h3>
+                        <p>Regular checkups to monitor growth, development, and preventive care.</p>
+                        <div style="margin-top: 10px;">
+                            <span style="background: #f1f7fc; color: #0b5ed7; padding: 3px 8px; border-radius: 4px; font-size: 0.8rem; margin-right: 5px; display: inline-block;">Preventive</span>
+                            <span style="background: #f1f7fc; color: #0b5ed7; padding: 3px 8px; border-radius: 4px; font-size: 0.8rem; display: inline-block;">30-45 Minutes</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="treatment-item">
+                    <div class="treatment-icon">
+                        <i class="fas fa-syringe"></i>
+                    </div>
+                    <div>
+                        <h3>Immunizations</h3>
+                        <p>Complete vaccination schedule following CDC guidelines.</p>
+                        <div style="margin-top: 10px;">
+                            <span style="background: #f1f7fc; color: #0b5ed7; padding: 3px 8px; border-radius: 4px; font-size: 0.8rem; display: inline-block;">Preventive</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="treatment-item">
+                    <div class="treatment-icon">
+                        <i class="fas fa-lungs"></i>
+                    </div>
+                    <div>
+                        <h3>Asthma Management</h3>
+                        <p>Comprehensive care for childhood asthma and allergies.</p>
+                        <div style="margin-top: 10px;">
+                            <span style="background: #f1f7fc; color: #0b5ed7; padding: 3px 8px; border-radius: 4px; font-size: 0.8rem; display: inline-block;">Chronic Care</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="treatment-item">
+                    <div class="treatment-icon">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <div>
+                        <h3>Developmental Screening</h3>
+                        <p>Early identification of developmental delays and learning differences.</p>
+                        <div style="margin-top: 10px;">
+                            <span style="background: #f1f7fc; color: #0b5ed7; padding: 3px 8px; border-radius: 4px; font-size: 0.8rem; display: inline-block;">Evaluation</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="treatment-item">
+                    <div class="treatment-icon">
+                        <i class="fas fa-bone"></i>
+                    </div>
+                    <div>
+                        <h3>Sports Physicals</h3>
+                        <p>Pre-participation exams for school and recreational sports.</p>
+                        <div style="margin-top: 10px;">
+                            <span style="background: #f1f7fc; color: #0b5ed7; padding: 3px 8px; border-radius: 4px; font-size: 0.8rem; display: inline-block;">Preventive</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="treatment-item">
+                    <div class="treatment-icon">
+                        <i class="fas fa-heartbeat"></i>
+                    </div>
+                    <div>
+                        <h3>Behavioral Health</h3>
+                        <p>Evaluation and management of ADHD, anxiety, and behavioral concerns.</p>
+                        <div style="margin-top: 10px;">
+                            <span style="background: #f1f7fc; color: #0b5ed7; padding: 3px 8px; border-radius: 4px; font-size: 0.8rem; display: inline-block;">Counseling</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Case Studies Section -->
+    <section class="section-padding light-bg">
+        <div class="container">
+            <h2>Patient Success Stories</h2>
+            <p style="text-align: center; max-width: 700px; margin: 0 auto 30px;">Real cases demonstrating our expertise in pediatric care.</p>
+            <div class="case-studies">
+                <div class="case-card">
+                    <img src="../images/asthama.jpg" alt="Asthma Case">
+                    <div class="case-content">
+                        <h3>Severe Asthma Management</h3>
+                        <div class="case-meta">
+                            <span><i class="fas fa-user" style="margin-right: 5px;"></i> 8-year-old male</span>
+                            <span><i class="fas fa-lungs" style="margin-right: 5px;"></i> 90% symptom reduction</span>
+                        </div>
+                        <p>Patient with severe persistent asthma achieved excellent control through personalized treatment plan and education.</p>
+                        <div style="margin-top: 15px;">
+                            <a href="https://news.childrensmercy.org/asthma-in-kids-symptoms-causes-and-prevention-tips/" class="btn" style="display: inline-block; padding: 8px 20px; font-size: 0.9rem;">Read Full Case</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="case-card">
+                    <img src="../images/dev.webp" alt="Development Case">
+                    <div class="case-content">
+                        <h3>Early Developmental Intervention</h3>
+                        <div class="case-meta">
+                            <span><i class="fas fa-user" style="margin-right: 5px;"></i> 3-year-old female</span>
+                            <span><i class="fas fa-brain" style="margin-right: 5px;"></i> Caught up to milestones</span>
+                        </div>
+                        <p>Early identification of speech delay led to successful intervention with complete catch-up by age 4.</p>
+                        <div style="margin-top: 15px;">
+                            <a href="https://icloudhospital.com/specialties/growth-and-development-disorder-care" class="btn" style="display: inline-block; padding: 8px 20px; font-size: 0.9rem;">Read Full Case</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Appointment Section -->
+    <section id="appointment">
+        <div class="container">
+            <h2>Book an Appointment</h2>
+            <p style="margin-bottom: 30px; max-width: 700px; margin-left: auto; margin-right: auto;">
+                Schedule your child's visit with our pediatric specialists. Our team will contact you within 24 hours to confirm your appointment.
+            </p>
+            <form class="appointment-form">
+                <div class="form-group">
+                    <label for="name">Child's Name</label>
+                    <input type="text" id="name" placeholder="Child's Name" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="parent">Parent/Guardian Name</label>
+                    <input type="text" id="parent" placeholder="Your Name" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="phone">Phone Number</label>
+                    <input type="tel" id="phone" placeholder="Your Phone" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="service">Service Interested In</label>
+                    <select id="service" required>
+                        <option value="">Select a Service</option>
+                        <option value="wellvisit">Well-Child Visit</option>
+                        <option value="sickvisit">Sick Visit</option>
+                        <option value="vaccine">Vaccinations</option>
+                        <option value="asthma">Asthma/Allergy</option>
+                        <option value="development">Developmental Screening</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="doctor">Preferred Doctor (Optional)</label>
+                    <select id="doctor">
+                        <option value="">Any Available Doctor</option>
+                        <option value="johnson">Dr. Emily Johnson</option>
+                        <option value="rodriguez">Dr. Michael Rodriguez</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="date">Preferred Date</label>
+                    <input type="date" id="date" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="message">Additional Information</label>
+                    <textarea id="message" rows="4" placeholder="Please describe your child's needs"></textarea>
+                </div>
+                
+                <button type="submit" class="btn">Request Appointment</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer style="background: #0b5ed7; color: white; padding: 40px 0; text-align: center;">
+        <div class="container">
+            <p>© 2023 Healthcare Hospital. All Rights Reserved.</p>
+            <div style="margin-top: 20px;">
+                <a href="#" style="color: white; margin: 0 10px;"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" style="color: white; margin: 0 10px;"><i class="fab fa-twitter"></i></a>
+                <a href="#" style="color: white; margin: 0 10px;"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Simple form handling
+        document.querySelector('.appointment-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Show confirmation message
+            const confirmation = document.createElement('div');
+            confirmation.style.background = 'rgba(255,255,255,0.2)';
+            confirmation.style.padding = '15px';
+            confirmation.style.borderRadius = '4px';
+            confirmation.style.marginTop = '20px';
+            confirmation.innerHTML = `
+                <h3 style="color: white; margin-bottom: 10px;">Thank You!</h3>
+                <p>We've received your appointment request and will contact you within 24 hours to confirm.</p>
+            `;
+            
+            this.parentNode.insertBefore(confirmation, this.nextSibling);
+            this.reset();
+            
+            // Smooth scroll to show confirmation
+            confirmation.scrollIntoView({ behavior: 'smooth' });
+        });
+    </script>
+</body>
+</html>

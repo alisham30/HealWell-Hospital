@@ -1,0 +1,686 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>General Medicine | Healthcare Hospital</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        /* ===== Base Styles ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            line-height: 1.6;
+            color: #333;
+            background-color: #f9f9f9;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        /* ===== Header Styles ===== */
+        .department-header {
+            background: linear-gradient(rgba(11, 94, 215, 0.85), rgba(6, 4, 94, 0.85)), 
+                        url('../images/genmed.jpg');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 100px 0;
+            text-align: center;
+        }
+        
+        .department-header h1 {
+            font-size: 2.8rem;
+            margin-bottom: 15px;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+        }
+        
+        .department-header p {
+            font-size: 1.2rem;
+            margin-bottom: 25px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        /* ===== Section Styles ===== */
+        .section-padding {
+            padding: 80px 0;
+        }
+        
+        .light-bg {
+            background-color: #f1f7fc;
+        }
+        
+        h2 {
+            font-size: 2.2rem;
+            color: #0b5ed7;
+            margin-bottom: 30px;
+            text-align: center;
+            position: relative;
+            padding-bottom: 15px;
+        }
+        
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: #0b5ed7;
+        }
+        
+        h3 {
+            font-size: 1.5rem;
+            color: #0b5ed7;
+            margin-bottom: 15px;
+        }
+        
+        p {
+            margin-bottom: 15px;
+        }
+        
+        /* ===== Two Column Layout ===== */
+        .two-column {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: center;
+        }
+        
+        .two-column img {
+            width: 100%;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .two-column img:hover {
+            transform: scale(1.02);
+        }
+        
+        /* ===== Team Grid ===== */
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .doctor-card {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .doctor-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+        }
+        
+        .doctor-card img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            border-bottom: 3px solid #0b5ed7;
+        }
+        
+        .doctor-info {
+            padding: 20px;
+        }
+        
+        .doctor-info h3 {
+            color: #0b5ed7;
+            margin-bottom: 5px;
+        }
+        
+        .specialty {
+            color: #0b5ed7;
+            font-weight: 600;
+            margin-bottom: 10px;
+            display: block;
+            font-size: 1.1rem;
+        }
+        
+        .lead-doctor {
+            border: 3px solid #0b5ed7;
+            position: relative;
+        }
+        
+        .lead-badge {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: #0b5ed7;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 4px;
+            font-weight: bold;
+            font-size: 0.8rem;
+        }
+        
+        /* ===== Treatments List ===== */
+        .treatments-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 25px;
+            margin-top: 40px;
+        }
+        
+        .treatment-item {
+            background: white;
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+            display: flex;
+            gap: 20px;
+            transition: all 0.3s ease;
+            border-left: 4px solid #0b5ed7;
+        }
+        
+        .treatment-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+        
+        .treatment-icon {
+            color: #0b5ed7;
+            font-size: 1.8rem;
+            margin-top: 5px;
+            min-width: 40px;
+            text-align: center;
+        }
+        
+        /* ===== Case Studies ===== */
+        .case-studies {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .case-card {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .case-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+        }
+        
+        .case-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        
+        .case-content {
+            padding: 20px;
+        }
+        
+        .case-content h3 {
+            color: #0b5ed7;
+            margin-bottom: 10px;
+        }
+        
+        .case-meta {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+            display: flex;
+            gap: 15px;
+        }
+        
+        /* ===== Appointment Section ===== */
+        #appointment {
+            background: linear-gradient(rgba(11, 94, 215, 0.85), rgba(6, 4, 94, 0.85)), 
+                        url('../images/appointment-bg.jpg');
+            background-size: cover;
+            color: white;
+            text-align: center;
+            padding: 80px 0;
+        }
+        
+        #appointment h2 {
+            color: white;
+        }
+        
+        #appointment h2::after {
+            background: white;
+        }
+        
+        .appointment-form {
+            max-width: 600px;
+            margin: 0 auto;
+            background: rgba(255,255,255,0.1);
+            padding: 30px;
+            border-radius: 8px;
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+            text-align: left;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+        
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid rgba(255,255,255,0.3);
+            background: rgba(255,255,255,0.1);
+            border-radius: 4px;
+            color: rgb(80, 117, 197);
+            font-size: 1rem;
+        }
+        
+        .form-group input::placeholder {
+            color: rgba(255,255,255,0.7);
+        }
+        
+        /* ===== Buttons ===== */
+        .btn {
+            display: inline-block;
+            background: #0b5ed7;
+            color: white;
+            padding: 12px 30px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .btn:hover {
+            background: #06045e;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        
+        .btn-outline {
+            background: transparent;
+            border: 2px solid white;
+            margin-left: 15px;
+        }
+        
+        .btn-outline:hover {
+            background: white;
+            color: #0b5ed7;
+        }
+        
+        /* ===== Responsive ===== */
+        @media (max-width: 768px) {
+            .two-column {
+                grid-template-columns: 1fr;
+            }
+            
+            .department-header h1 {
+                font-size: 2.2rem;
+            }
+            
+            h2 {
+                font-size: 1.8rem;
+            }
+            
+            .treatments-list,
+            .case-studies {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="department-header">
+        <div class="container">
+            <h1>General Medicine Department</h1>
+            <p>Comprehensive primary care for adults, focusing on prevention, diagnosis, and treatment of a wide range of health conditions</p>
+            <div style="margin-top: 30px;">
+                <a href="#appointment" class="btn">Book Appointment</a>
+                <a href="#treatments" class="btn btn-outline">Our Services</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Overview Section -->
+    <section class="section-padding">
+        <div class="container">
+            <div class="two-column">
+                <div>
+                    <h2>About Our General Medicine Department</h2>
+                    <p>Our General Medicine department provides comprehensive primary care services for adults, focusing on prevention, early detection, and management of acute and chronic conditions. We serve as your first point of contact for health concerns and coordinate all aspects of your care.</p>
+                    <p>Under the leadership of <strong>Dr. Sarah Thompson</strong>, our team of internists provides personalized, evidence-based care with a focus on building long-term patient-doctor relationships.</p>
+                    <ul style="margin-top: 20px; margin-left: 20px; list-style-type: none;">
+                        <li style="margin-bottom: 10px; position: relative; padding-left: 25px;">
+                            <i class="fas fa-heartbeat" style="color: #0b5ed7; position: absolute; left: 0;"></i>
+                            <strong>Preventive Care:</strong> Annual physicals and health screenings
+                        </li>
+                        <li style="margin-bottom: 10px; position: relative; padding-left: 25px;">
+                            <i class="fas fa-pills" style="color: #0b5ed7; position: absolute; left: 0;"></i>
+                            <strong>Chronic Disease Management:</strong> For diabetes, hypertension, and more
+                        </li>
+                        <li style="margin-bottom: 10px; position: relative; padding-left: 25px;">
+                            <i class="fas fa-stethoscope" style="color: #0b5ed7; position: absolute; left: 0;"></i>
+                            <strong>Acute Care:</strong> Treatment for illnesses and minor injuries
+                        </li>
+                    </ul>
+                </div>
+                <div>
+                    <img src="../images/genmed-1.webp" alt="General Medicine Clinic">
+                    <div style="display: flex; justify-content: space-between; margin-top: 15px;">
+                        <div style="text-align: center; background: #f1f7fc; padding: 15px; border-radius: 8px; flex: 1; margin: 0 5px;">
+                            <div style="font-size: 1.8rem; color: #0b5ed7; font-weight: bold;">15+</div>
+                            <div>Board-Certified Physicians</div>
+                        </div>
+                        <div style="text-align: center; background: #f1f7fc; padding: 15px; border-radius: 8px; flex: 1; margin: 0 5px;">
+                            <div style="font-size: 1.8rem; color: #0b5ed7; font-weight: bold;">98%</div>
+                            <div>Patient Satisfaction</div>
+                        </div>
+                        <div style="text-align: center; background: #f1f7fc; padding: 15px; border-radius: 8px; flex: 1; margin: 0 5px;">
+                            <div style="font-size: 1.8rem; color: #0b5ed7; font-weight: bold;">Same Day</div>
+                            <div>Sick Visits Available</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Our Team Section -->
+    <section class="section-padding light-bg">
+        <div class="container">
+            <h2>Our General Medicine Physicians</h2>
+            <p style="text-align: center; max-width: 700px; margin: 0 auto 30px;">Meet our team of board-certified internists led by Dr. Sarah Thompson.</p>
+            <div class="team-grid">
+                <div class="doctor-card lead-doctor">
+                    <div class="lead-badge">Department Lead</div>
+                    <img src="../images/gendoc2.jpg" alt="Dr. Sia">
+                    <div class="doctor-info">
+                        <h3>Dr. Sianne  Jason</h3>
+                        <span class="specialty">Internal Medicine Specialist</span>
+                        <p><strong>Education:</strong> MD, Harvard Medical School</p>
+                        <p><strong>Experience:</strong> 20+ years</p>
+                        <p><strong>Specializes in:</strong> Preventive medicine, complex diagnosis</p>
+                        <p><strong>Awards:</strong> Top Doctor Award (2020-2023), Excellence in Patient Care</p>
+                    </div>
+                </div>
+                
+                <div class="doctor-card">
+                    <img src="../images/gendoc1.jpg" alt="Dr. Michael Jackson">
+                    <div class="doctor-info">
+                        <h3>Dr. Michael Cruz</h3>
+                        <span class="specialty">Internal Medicine</span>
+                        <p><strong>Education:</strong> MD, Johns Hopkins University</p>
+                        <p><strong>Experience:</strong> 12+ years</p>
+                        <p><strong>Specializes in:</strong> Geriatric care, men's health, Diabetes, Thyroditus, Prostrate Health, Tubercolosis Detection</p>
+                    </div>
+                </div>
+                
+                <div class="doctor-card">
+                    <img src="../images/gendoc3.jpeg" alt="Dr. Maria Garcia">
+                    <div class="doctor-info">
+                        <h3>Dr. Slayden Garcia</h3>
+                        <span class="specialty">Internal Medicine</span>
+                        <p><strong>Education:</strong> MD, Stanford University</p>
+                        <p><strong>Experience:</strong> 8+ years</p>
+                        <p><strong>Specializes in:</strong> Women's health, preventive care, Menstural Cycle, Vital Care, Goitre Specialization, Hygene Professor</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Treatments Section -->
+    <section id="treatments" class="section-padding">
+        <div class="container">
+            <h2>Our General Medicine Services</h2>
+            <p style="text-align: center; max-width: 700px; margin: 0 auto 30px;">Comprehensive primary care services for all your health needs.</p>
+            <div class="treatments-list">
+                <div class="treatment-item">
+                    <div class="treatment-icon">
+                        <i class="fas fa-heartbeat"></i>
+                    </div>
+                    <div>
+                        <h3>Annual Physical Exams</h3>
+                        <p>Comprehensive health assessments including screenings, vaccinations, and personalized health advice.</p>
+                        <div style="margin-top: 10px;">
+                            <span style="background: #f1f7fc; color: #0b5ed7; padding: 3px 8px; border-radius: 4px; font-size: 0.8rem; margin-right: 5px; display: inline-block;">Preventive</span>
+                            <span style="background: #f1f7fc; color: #0b5ed7; padding: 3px 8px; border-radius: 4px; font-size: 0.8rem; display: inline-block;">60 Minutes</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="treatment-item">
+                    <div class="treatment-icon">
+                        <i class="fas fa-pills"></i>
+                    </div>
+                    <div>
+                        <h3>Chronic Disease Management</h3>
+                        <p>Personalized care plans for diabetes, hypertension, heart disease, and other chronic conditions.</p>
+                        <div style="margin-top: 10px;">
+                            <span style="background: #f1f7fc; color: #0b5ed7; padding: 3px 8px; border-radius: 4px; font-size: 0.8rem; display: inline-block;">Ongoing Care</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="treatment-item">
+                    <div class="treatment-icon">
+                        <i class="fas fa-lungs"></i>
+                    </div>
+                    <div>
+                        <h3>Acute Illness Care</h3>
+                        <p>Treatment for infections, flu, injuries, and other sudden health concerns with same-day availability.</p>
+                        <div style="margin-top: 10px;">
+                            <span style="background: #f1f7fc; color: #0b5ed7; padding: 3px 8px; border-radius: 4px; font-size: 0.8rem; display: inline-block;">Urgent</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="treatment-item">
+                    <div class="treatment-icon">
+                        <i class="fas fa-vial"></i>
+                    </div>
+                    <div>
+                        <h3>Health Screenings</h3>
+                        <p>Comprehensive screenings for cancer, cardiovascular disease, and other conditions based on your risk factors.</p>
+                        <div style="margin-top: 10px;">
+                            <span style="background: #f1f7fc; color: #0b5ed7; padding: 3px 8px; border-radius: 4px; font-size: 0.8rem; display: inline-block;">Preventive</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="treatment-item">
+                    <div class="treatment-icon">
+                        <i class="fas fa-syringe"></i>
+                    </div>
+                    <div>
+                        <h3>Vaccinations</h3>
+                        <p>All recommended immunizations including flu shots, pneumonia vaccines, and travel vaccinations.</p>
+                        <div style="margin-top: 10px;">
+                            <span style="background: #f1f7fc; color: #0b5ed7; padding: 3px 8px; border-radius: 4px; font-size: 0.8rem; display: inline-block;">Preventive</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="treatment-item">
+                    <div class="treatment-icon">
+                        <i class="fas fa-comment-medical"></i>
+                    </div>
+                    <div>
+                        <h3>Health Counseling</h3>
+                        <p>Personalized guidance on nutrition, exercise, stress management, and lifestyle changes.</p>
+                        <div style="margin-top: 10px;">
+                            <span style="background: #f1f7fc; color: #0b5ed7; padding: 3px 8px; border-radius: 4px; font-size: 0.8rem; display: inline-block;">Wellness</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Case Studies Section -->
+    <section class="section-padding light-bg">
+        <div class="container">
+            <h2>Patient Success Stories</h2>
+            <p style="text-align: center; max-width: 700px; margin: 0 auto 30px;">Real cases demonstrating our comprehensive approach to primary care.</p>
+            <div class="case-studies">
+                <div class="case-card">
+                    <img src="../images/gendi.jpg" alt="Diabetes Management Case">
+                    <div class="case-content">
+                        <h3>Diabetes Management</h3>
+                        <div class="case-meta">
+                            <span><i class="fas fa-user" style="margin-right: 5px;"></i> 58-year-old male</span>
+                            <span><i class="fas fa-chart-line" style="margin-right: 5px;"></i> HbA1c reduced to 6.2</span>
+                        </div>
+                        <p>Patient achieved excellent diabetes control through personalized treatment plan by Dr. Thompson, avoiding complications.</p>
+                        <div style="margin-top: 15px;">
+                            <a href="https://sunrisediagnosis.com/blog/managing-diabetes-practical-tips-for-a-healthier-life/" class="btn" style="display: inline-block; padding: 8px 20px; font-size: 0.9rem;">Read Full Case</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="case-card">
+                    <img src="../images/gene.png" alt="Preventive Care Case">
+                    <div class="case-content">
+                        <h3>Early Cancer Detection</h3>
+                        <div class="case-meta">
+                            <span><i class="fas fa-user" style="margin-right: 5px;"></i> 45-year-old female</span>
+                            <span><i class="fas fa-flag" style="margin-right: 5px;"></i> Early stage detection</span>
+                        </div>
+                        <p>Routine screening identified early-stage cancer, leading to successful treatment and full recovery.</p>
+                        <div style="margin-top: 15px;">
+                            <a href="https://www.mdanderson.org/cancerwise/what-are-multi-cancer-early-detection--mced--tests--and-should-you-get-one.h00-159621012.html" class="btn" style="display: inline-block; padding: 8px 20px; font-size: 0.9rem;">Read Full Case</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Appointment Section -->
+    <section id="appointment">
+        <div class="container">
+            <h2>Book an Appointment</h2>
+            <p style="margin-bottom: 30px; max-width: 700px; margin-left: auto; margin-right: auto;">
+                Schedule your visit with our primary care physicians. Our team will contact you within 24 hours to confirm your appointment.
+            </p>
+            <form class="appointment-form">
+                <div class="form-group">
+                    <label for="name">Patient Name</label>
+                    <input type="text" id="name" placeholder="Your Name" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="phone">Phone Number</label>
+                    <input type="tel" id="phone" placeholder="Your Phone" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="dob">Date of Birth</label>
+                    <input type="date" id="dob" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="service">Service Needed</label>
+                    <select id="service" required>
+                        <option value="">Select Service</option>
+                        <option value="annual">Annual Physical</option>
+                        <option value="sick">Sick Visit</option>
+                        <option value="chronic">Chronic Disease Management</option>
+                        <option value="screen">Health Screening</option>
+                        <option value="vaccine">Vaccination</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="doctor">Preferred Doctor</label>
+                    <select id="doctor">
+                        <option value="">Any Available Doctor</option>
+                        <option value="thompson" selected>Dr. Sarah Thompson (Department Lead)</option>
+                        <option value="jackson">Dr. Michael Jackson</option>
+                        <option value="garcia">Dr. Maria Garcia</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="date">Preferred Date</label>
+                    <input type="date" id="date" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="message">Additional Information</label>
+                    <textarea id="message" rows="4" placeholder="Please describe your health concerns"></textarea>
+                </div>
+                
+                <button type="submit" class="btn">Request Appointment</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer style="background: #0b5ed7; color: white; padding: 40px 0; text-align: center;">
+        <div class="container">
+            <p>© 2023 Healthcare Hospital. All Rights Reserved.</p>
+            <div style="margin-top: 20px;">
+                <a href="#" style="color: white; margin: 0 10px;"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" style="color: white; margin: 0 10px;"><i class="fab fa-twitter"></i></a>
+                <a href="#" style="color: white; margin: 0 10px;"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Simple form handling
+        document.querySelector('.appointment-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Show confirmation message
+            const confirmation = document.createElement('div');
+            confirmation.style.background = 'rgba(255,255,255,0.2)';
+            confirmation.style.padding = '15px';
+            confirmation.style.borderRadius = '4px';
+            confirmation.style.marginTop = '20px';
+            confirmation.innerHTML = `
+                <h3 style="color: white; margin-bottom: 10px;">Thank You!</h3>
+                <p>We've received your appointment request and will contact you within 24 hours to confirm.</p>
+            `;
+            
+            this.parentNode.insertBefore(confirmation, this.nextSibling);
+            this.reset();
+            
+            // Smooth scroll to show confirmation
+            confirmation.scrollIntoView({ behavior: 'smooth' });
+        });
+    </script>
+</body>
+</html>
